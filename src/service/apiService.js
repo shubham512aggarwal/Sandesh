@@ -1,0 +1,20 @@
+const BASE_URL = import.meta.env.BASE_URL;
+
+export async function callMethod(method, data, type){
+    try{
+        const response = await fetch(`${BASE_URL}/${method}`, {
+            method: `${type}    `,
+            headers:{
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        if(!response.ok) throw Error(result.message || "Something went wrong");
+        return result;
+    }
+    catch(error){
+        console.log(`API error: ${method}`, error)
+        throw error;
+    }
+}
