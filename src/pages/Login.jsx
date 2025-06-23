@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "../store/authStore";
-import { callMethod } from "../service/apiService";
+import { authAction } from "../service/apiService";
 
 export default function Login(){
 
@@ -11,13 +11,13 @@ export default function Login(){
     const navigate = useNavigate();
     const {login} = useAuthStore();
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async(e) => {debugger
         e.preventDefault();
         const loginDto = {
             email, password
         }
         try {
-            const res = await callMethod('login', loginDto, 'POST')
+            const res = await authAction('login', loginDto, 'POST')
             login(res.token);
             navigate('/chat');
         } catch (error) {

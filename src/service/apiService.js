@@ -1,9 +1,9 @@
-const BASE_URL = import.meta.env.BASE_URL;
+const VITE_AUTH_BASE_URL = import.meta.env.VITE_AUTH_BASE_URL;
 
-export async function callMethod(method, data, type){
+export async function authAction(method, data){debugger
     try{
-        const response = await fetch(`${BASE_URL}/${method}`, {
-            method: `${type}    `,
+        const response = await fetch(`${VITE_AUTH_BASE_URL}/${method}`, {
+            method: 'POST',
             headers:{
                 'Content-type': 'application/json'
             },

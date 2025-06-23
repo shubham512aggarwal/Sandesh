@@ -1,23 +1,29 @@
 import React from "react";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import { authAction } from "../service/apiService";
 
 export default function Signup(){
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPasssword] = useState('');
+    const [password, setPassword] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         const registerDto = {
             username, email, password, phoneNumber
         };
-        console.log(registerDto);
-        navigate('/login');
-    }
+        try {
+            const result = await authAction('register', registerDto)
+            console.log(registerDto);
+            navigate('/login');
+        } catch (error) {
+            console.log("Something went wrong in registration. ", error);
+        }
+        }
 
     return(
         <div className="flex items-center justify-center h-screen bg-gray-100">
