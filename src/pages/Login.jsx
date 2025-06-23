@@ -11,7 +11,7 @@ export default function Login(){
     const navigate = useNavigate();
     const {login} = useAuthStore();
 
-    const handleSubmit = async(e) => {debugger
+    const handleSubmit = async(e) => {
         e.preventDefault();
         const loginDto = {
             email, password
