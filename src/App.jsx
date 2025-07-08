@@ -12,7 +12,11 @@ function App() {
     <Routes>
       <Route path='/login' element={<Login/>} />
       <Route path='/signup' element={<Signup/>} />
-      <Route path='/chat' element={<RequireAuth><ChatPage/></RequireAuth>} />
+      <Route path='/chat' element={
+        // <RequireAuth>
+           <ChatPage/>
+        // </RequireAuth>
+        } />
       <Route path='*' element={<Navigate to="/login" />} />
     </Routes>
   )

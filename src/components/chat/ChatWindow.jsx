@@ -37,7 +37,7 @@ export default function ChatWindow() {
             className="w-10 h-10 rounded-full cursor-pointer"
             onClick={() => setZoomImage(true)}
           />
-          <div>
+          <div className='cursor-default'>
             <h4 className="text-sm font-semibold">Shubham Sharma</h4>
             <p className="text-xs text-gray-500 text-left">Online</p>
           </div>
@@ -112,7 +112,7 @@ export default function ChatWindow() {
       {/* Zoom Image Modal */}
       {zoomImage && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-[#000000a8] bg-opacity-60 flex items-center justify-center z-50"
           onClick={() => setZoomImage(false)}
         >
           <img

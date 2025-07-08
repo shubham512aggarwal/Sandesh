@@ -4,7 +4,7 @@ export default function ChatItem({ chat, onClick }) {
   return (
     <div
       onClick={() => onClick?.(chat)}
-      className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 cursor-pointer"
+      className="flex items-center gap-3 px-4 py-3 hover:bg-gray-200 cursor-pointer"
     >
       {/* Profile Picture */}
       <img
