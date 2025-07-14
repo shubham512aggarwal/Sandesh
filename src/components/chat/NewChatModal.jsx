@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { chatAction } from '../../service/apiService';
 
 export default function NewChatModal({ onClose }) {
     const [searchTerm, setSearchTerm] = useState('');
@@ -7,10 +8,13 @@ export default function NewChatModal({ onClose }) {
 
     const handleSearch = async () => {
         if (!searchTerm.trim()) return;
+        const seachrDto = {
+            searchTerm
+        };
         setLoading(true);
         try {
-        const res = await fetch(`https://localhost:7175/auth/search-users?query=${searchTerm}`);
-        const data = await res.json();
+        const res = await chatAction('GetNewContact', seachrDto, 'GET');
+        const data = await res;
         setUserResults(data);
         } catch (error) {
         console.error('Search failed', error);

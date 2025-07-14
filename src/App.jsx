@@ -13,9 +13,9 @@ function App() {
       <Route path='/login' element={<Login/>} />
       <Route path='/signup' element={<Signup/>} />
       <Route path='/chat' element={
-        // <RequireAuth>
+        <RequireAuth>
            <ChatPage/>
-        // </RequireAuth>
+        </RequireAuth>
         } />
       <Route path='*' element={<Navigate to="/login" />} />
     </Routes>

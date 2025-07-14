@@ -5,7 +5,7 @@ const AUTH_URL = import.meta.env.VITE_AUTH_BASE_URL;
 const CHAT_URL = import.meta.env.VITE_CHAT_BASE_URL;
 
 const apiClient = axios.create({
-    baseUrl: CHAT_URL,
+    baseURL: CHAT_URL,
     withCredentials: true
 });
 
@@ -33,7 +33,7 @@ apiClient.interceptors.response.use(
     async(error) => {
         const originalRequest = error.config;
 
-        if(error.response?.state == 401 && !originalRequest._retry){
+        if(error.response?.status == 401 && !originalRequest._retry){
             originalRequest._retry = true;
             try {
                 const refreshRes = await axios.post(`${AUTH_URL}/refreshToken`, {}, {withCredentials: true});
@@ -48,7 +48,7 @@ apiClient.interceptors.response.use(
             } catch (error) {
                 console.log("Refresh token error ", error);
                 authStore.getState().logout();
-                window.location.href("/login");
+                window.location.href = "/login";
             }
         }
         return Promise.reject(error);
